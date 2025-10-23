@@ -89,12 +89,18 @@ parrafo.addEventListener('mouseout', function () {
 //         - Usar addEventListener para 'mouseover' y 'mouseout'
 
 // TODO: 4. Aplicar hover a todos los párrafos existentes inicialmente
-contenido.addEventListener('mouseover', function () {
-   contenido.style.backgroundColor = '#0cee6aff';
-});
-contenido.addEventListener('mouseout', function () {
-   contenido.style.backgroundColor = '';
-});
+function aplicarHover(elemento) {
+   elemento.addEventListener('mouseover', function () {
+      elemento.style.backgroundColor = '#e7f5ff';
+   });
+   elemento.addEventListener('mouseout', function () {
+      elemento.style.backgroundColor = '';
+   });
+}
+const parrafosIniciales = contenido.getElementsByTagName('p');
+for (let i = 0; i < parrafosIniciales.length; i++) {
+   aplicarHover(parrafosIniciales[i]);
+}
 
 /* ======================================================
    TODO: Ejercicio 4 – Trabajar con inputs y formularios
