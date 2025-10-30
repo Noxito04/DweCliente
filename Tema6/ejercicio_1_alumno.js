@@ -511,7 +511,7 @@ function crearArrayNumeros() {
 
 function duplicarConMap() {
     // Usar map() para duplicar todos los números
-    var duplicados = numeros.map(function(num) {
+    var duplicados = numeros.map(function (num) {
         return num * 2;
     });
 
@@ -520,7 +520,7 @@ function duplicarConMap() {
 
 function filtrarPares() {
     // Usar filter() para obtener solo números pares
-    var pares = numeros.filter(function(num) {
+    var pares = numeros.filter(function (num) {
         return num % 2 === 0;
     });
 
@@ -529,7 +529,7 @@ function filtrarPares() {
 
 function sumarConReduce() {
     // Usar reduce() para sumar todos los números
-    var suma = numeros.reduce(function(acumulador, num) {
+    var suma = numeros.reduce(function (acumulador, num) {
         return acumulador + num;
     }, 0);
 
@@ -581,10 +581,6 @@ function agregarLibro() {
     document.getElementById("resultado-ej10").innerHTML =
         "<div class='alert alert-success'>Libro '" + titulo + "' añadido correctamente</div>";
     // TODO: Actualizar visualización
-    mostrarBiblioteca();
-
-
-
 }
 
 function mostrarBiblioteca() {
@@ -618,6 +614,11 @@ function librosRecientes() {
     });
     mostrarLibros(recientes);
 }
+// Función para eliminar la card
+function eliminarLibro(indice) {
+    biblioteca.splice(indice, 1);
+    mostrarLibros(biblioteca);
+}
 
 function mostrarLibros(arrayLibros) {
     // TODO: Mostrar libros en formato de tarjetas HTML
@@ -631,18 +632,23 @@ function mostrarLibros(arrayLibros) {
         html += "<div class='row'>";
         for (var i = 0; i < arrayLibros.length; i++) {
             var libro = arrayLibros[i];
-            html += "<div class='col-md-4 mb-3'>";
-            html += "<div class='card'>";
-            html += "<div class='card-body'>";
-            html += "<h5 class='card-title'>" + libro.titulo + "</h5>";
-            html += "<p class='card-text'>";
-            html += "<strong>Autor:</strong> " + libro.autor + "<br>";
-            html += "<strong>Año:</strong> " + libro.año + "<br>";
-            html += "<strong>Género:</strong> " + libro.genero;
-            html += "</p>";
-            html += "</div>";
-            html += "</div>";
-            html += "</div>";
+
+            html += `
+            <div class='col-md-4 mb-3'>
+                <div class='card'>
+                    <div class='card-body'>
+                        <h5 class='card-title'>${libro.titulo}</h5>
+                        <p class='card-text'>
+                        <strong>Autor:</strong>${libro.autor}<br>
+                        <strong>Año:</strong> ${libro.año}<br>
+                        <strong>Género:</strong> ${libro.genero}
+                    </p>
+                <button class='btn btn-danger btn-sm' onclick='eliminarLibro(${i})'>Eliminar</button>
+                </div>
+                </div>
+                </div>
+
+            `;
         }
         html += "</div>"
     }
