@@ -7,6 +7,8 @@ document.getElementById('run-e1').addEventListener('click', function () {
   const out = document.getElementById('out-e1');
   // TODO: implementar raizCuadrada(numero) 
   function raizCuadrada(numero) {
+    if (isNaN(numero)) return 'Error747: introduce un número válido';
+  if (numero < 0) return 'No se puede calcular raíz de un número negativo';
     return Math.sqrt(numero);
   }
   const res = raizCuadrada(v);
@@ -103,13 +105,14 @@ document.getElementById('out-e8').textContent = `Resultado: ${saludar(nombre)}`;
 document.getElementById('run-e9').addEventListener('click', function () {
 
   // TODO: implementar función externa e interna
-function externa(a = 10) {
-    function interna(b = 5) {
-      return a + b;
-    }
-    return interna();
+function externa() {
+  let contador = 0;
+  function interna() {
+    contador++;
+    return contador;
   }
-
+  return interna();
+}
   const resultado = externa();
   document.getElementById('out-e9').textContent = `Resultado: ${resultado}`;
 });
@@ -119,13 +122,12 @@ document.getElementById('run-e10').addEventListener('click', function () {
 
   // TODO: usa los métodos nativos vistos (length, toUpperCase, trim, indexOf, Math.random, Date.now)
 const texto = document.getElementById('a-e10').value || '  Hola, Mundo|  ';
-
   const info = `
   Longitud: ${texto.length}
   Mayusculas: ${texto.toUpperCase()}
   Sin espacios: ${texto.trim()}
   Indice de Mundo: ${texto.indexOf('Mundo')}
-  Aleatorio (0 al 1): ${Math.random()}
+  Aleatorio (0 al 1): ${ Math.random().toFixed(4)}
   Tiempo actual: ${Date.now()}
   `;
   document.getElementById('out-e10').textContent = `Resultado: ${info}`;
