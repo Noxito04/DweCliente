@@ -618,7 +618,7 @@ function librosRecientes() {
 function eliminarLibro(indice) {
     biblioteca.splice(indice, 1);
     mostrarLibros(biblioteca);
-}
+}                                   
 
 function mostrarLibros(arrayLibros) {
     // TODO: Mostrar libros en formato de tarjetas HTML
